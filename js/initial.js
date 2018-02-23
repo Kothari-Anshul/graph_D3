@@ -17,7 +17,7 @@ for (let i = 0; i < fileNames.length; i += 1) { // FIXME: Replace with forEach -
   lr.line_count = 0;
   lr.label = labels[i];
 
-  lr.on('line', function (line) {
+  lr.on('line', function fo(line) {
     this.line_count += 1;
     if (this.line_count === 1) {
       /* using header to avoid hardcoding in the else section ---- fixed */
@@ -61,15 +61,23 @@ for (let i = 0; i < fileNames.length; i += 1) { // FIXME: Replace with forEach -
 
       fs.writeFile('../plot1.json', JSON.stringify(agegroup), (err) => {
         if (err) {
-          return console.log(err);
+          // console.log(err);
+          return 0;
         }
+
+        // console.log('success');
+        return 1;
       });
       /* Create second file to plot for category versus number of literate persons */
 
       fs.writeFile('../plot2.json', JSON.stringify(eduCategory), (err) => {
         if (err) {
-          return console.log(err);
+          // console.log(err);
+          return 0;
         }
+
+        // console.log('success');
+        return 1;
       });
     }
   });

@@ -8,6 +8,34 @@ const agegroup = {}; // FIXME: User proper variable name ---- fixed
 const eduCategory = {};
 let fileRead = 0;
 
+function cb() {
+  fileRead += 1;
+
+  if (fileRead === 3) {
+    /* Create first file to plot for i.e agegroup versus number of literate persons */
+
+    fs.writeFile('../plot1.json', JSON.stringify(agegroup), (err) => {
+      if (err) {
+        // console.log(err);
+        return 0;
+      }
+
+      // console.log('success');
+      return 1;
+    });
+    /* Create second file to plot for category versus number of literate persons */
+
+    fs.writeFile('../plot2.json', JSON.stringify(eduCategory), (err) => {
+      if (err) {
+        // console.log(err);
+        return 0;
+      }
+
+      // console.log('success');
+      return 1;
+    });
+  }
+}
 
 for (let i = 0; i < fileNames.length; i += 1) { // FIXME: Replace with forEach --fixed
   const lr = readline.createInterface({
@@ -53,32 +81,5 @@ for (let i = 0; i < fileNames.length; i += 1) { // FIXME: Replace with forEach -
     }
   });
 
-  lr.on('close', () => {
-    fileRead += 1;
-
-    if (fileRead === 3) {
-      /* Create first file to plot for i.e agegroup versus number of literate persons */
-
-      fs.writeFile('../plot1.json', JSON.stringify(agegroup), (err) => {
-        if (err) {
-          // console.log(err);
-          return 0;
-        }
-
-        // console.log('success');
-        return 1;
-      });
-      /* Create second file to plot for category versus number of literate persons */
-
-      fs.writeFile('../plot2.json', JSON.stringify(eduCategory), (err) => {
-        if (err) {
-          // console.log(err);
-          return 0;
-        }
-
-        // console.log('success');
-        return 1;
-      });
-    }
-  });
+  lr.on('close', cb);
 }

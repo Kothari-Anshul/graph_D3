@@ -8,8 +8,7 @@ const agegroup = {}; // FIXME: User proper variable name ---- fixed
 const eduCategory = {};
 let fileRead = 0;
 
-<
-div > < /div>
+
 for (const i in fileNames) { // FIXME: Replace with Array.prototype.forEach --- fixed
     const lr = readline.createInterface({
         input: fs.createReadStream(fileNames[i]),

@@ -4,6 +4,7 @@
   "description": "Bar chart with tool tip graph using D3 Api",
   "main": "index.js",
   "scripts": {
+    "start":"http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

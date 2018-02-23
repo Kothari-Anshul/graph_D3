@@ -9,7 +9,7 @@ const eduCategory = {};
 let fileRead = 0;
 
 
-for (let i = 0; i < fileNames.length; i += 1) { // FIXME: Replace with Array.prototype.forEach --- fixed
+for (let i = 0; i < fileNames.length; i += 1) { // FIXME: Replace with forEach --fixed
   const lr = readline.createInterface({
     input: fs.createReadStream(fileNames[i]),
   });
@@ -23,7 +23,7 @@ for (let i = 0; i < fileNames.length; i += 1) { // FIXME: Replace with Array.pro
       /* using header to avoid hardcoding in the else section ---- fixed */
       const values = line.split(',');
 
-      for (const j in values) {
+      for (let j = 0; j < values.length; j += 1) {
         if (values[j] === 'Total/ Rural/ Urban') {
           this.total_index = j;
         } else if (values[j] === 'Age-group') {
